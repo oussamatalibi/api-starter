@@ -1,0 +1,22 @@
+{
+  "name": "student-api",
+  "version": "1.0.0",
+  "description": "A beginner-friendly REST API for classroom learning with JavaScript fetch()",
+  "type": "module",
+  "scripts": {
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "api",
+    "education",
+    "students",
+    "javascript",
+    "fetch",
+    "vercel"
+  ],
+  "author": "Oussama",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}

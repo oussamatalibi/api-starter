@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Learning API</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: "#eef9ff",
+              100: "#d9f1ff",
+              500: "#0ea5e9",
+              600: "#0284c7",
+              700: "#0369a1",
+              900: "#0c4a6e"
+            }
+          },
+          fontFamily: {
+            display: ["Trebuchet MS", "Segoe UI", "sans-serif"],
+            body: ["Segoe UI", "Tahoma", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-image:
+        radial-gradient(circle at 10% 10%, rgba(14, 165, 233, 0.12), transparent 35%),
+        radial-gradient(circle at 90% 5%, rgba(16, 185, 129, 0.10), transparent 30%),
+        linear-gradient(180deg, #f8fbff 0%, #f0f7fb 100%);
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body class="font-body text-slate-800 antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-white focus:px-4 focus:py-2">
+    Skip to main content
+  </a>
+
+  <header class="border-b border-sky-100 bg-white/80 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-brand-600">Classroom Project</p>
+        <h1 class="font-display text-2xl font-bold text-brand-900 sm:text-3xl">Student Learning API</h1>
+      </div>
+      <a
+        href="#try"
+        class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
+      >
+        Try the API
+      </a>
+    </div>
+  </header>
+
+  <main id="main" class="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+    <!-- Intro -->
+    <section class="mb-12 rounded-2xl bg-white/90 p-6 shadow-sm ring-1 ring-sky-100 sm:p-8" aria-labelledby="intro-title">
+      <h2 id="intro-title" class="font-display text-2xl font-bold text-brand-900">Learn how APIs work</h2>
+      <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+        This is a free practice API for students aged 11–15. You can call these endpoints with
+        JavaScript <code class="rounded bg-sky-50 px-1.5 py-0.5 text-brand-700">fetch()</code>
+        from your own HTML projects — even from Live Server on your computer.
+      </p>
+      <p class="mt-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-amber-900" role="note">
+        <strong>Important:</strong> All student data is fictional. It was invented for learning and does not describe real people.
+      </p>
+    </section>
+
+    <!-- Key concepts -->
+    <section class="mb-12" aria-labelledby="concepts-title">
+      <h2 id="concepts-title" class="font-display text-2xl font-bold text-brand-900">Key ideas</h2>
+      <p class="mt-2 text-slate-600">Before you start coding, learn these five words.</p>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-xl bg-white p-5 ring-1 ring-sky-100">
+          <h3 class="font-semibold text-brand-700">Request</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">A message you send to the API asking for data. Example: “Give me a random fact.”</p>
+        </article>
+        <article class="rounded-xl bg-white p-5 ring-1 ring-sky-100">
+          <h3 class="font-semibold text-brand-700">Response</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">The answer the API sends back. It usually contains JSON data.</p>
+        </article>
+        <article class="rounded-xl bg-white p-5 ring-1 ring-sky-100">
+          <h3 class="font-semibold text-brand-700">Endpoint</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">A specific URL that does one job, like <code class="text-brand-700">/api/fact</code> or <code class="text-brand-700">/api/jokes</code>.</p>
+        </article>
+        <article class="rounded-xl bg-white p-5 ring-1 ring-sky-100">
+          <h3 class="font-semibold text-brand-700">JSON</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">A text format for data that looks like JavaScript objects. APIs love JSON!</p>
+        </article>
+        <article class="rounded-xl bg-white p-5 ring-1 ring-sky-100 sm:col-span-2 lg:col-span-1">
+          <h3 class="font-semibold text-brand-700">Status code</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">A number that tells you if the request worked. <strong>200</strong> = OK, <strong>404</strong> = not found, <strong>400</strong> = bad request.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Endpoints list -->
+    <section class="mb-12" aria-labelledby="endpoints-title">
+      <h2 id="endpoints-title" class="font-display text-2xl font-bold text-brand-900">All endpoints</h2>
+      <p class="mt-2 text-slate-600">Replace the base URL with your deployed Vercel URL after you publish the project.</p>
+
+      <div class="mt-6 space-y-4">
+        <article class="rounded-xl bg-white p-5 ring-1 ring-sky-100">
+          <h3 class="font-semibold text-brand-800"><code>GET /api/hello</code></h3>
+          <p class="mt-1 text-sm text-slate-600">A friendly welcome message from the teacher.</p>
+          <p class="mt-2 text-sm"><span class="font-medium">Example:</span> <code class="text-brand-700">/api/hello</code></p>
+        </article>
+
+        <article class="rounded-xl bg-white p-5 ring-1 ring-sky-100">
+          <h3 class="font-semibold text-brand-800"><code>GET /api/fact</code></h3>
+          <p class="mt-1 text-sm text-slate-600">Returns one random educational fact. Optional: filter by category.</p>
+          <p class="mt-2 text-sm"><span class="font-medium">Examples:</span> <code class="text-brand-700">/api/fact</code> · <code class="text-brand-700">/api/fact?category=space</code></p>
+          <p class="mt-1 text-xs text-slate-500">Categories: animals, computers, science, space, geography, programming</p>
+        </article>
+
+        <article class="rounded-xl bg-white p-5 ring-1 ring-sky-100">
+          <h3 class="font-semibold text-brand-800"><code>GET /api/students</code></h3>
+          <p class="mt-1 text-sm text-slate-600">Returns fictional students. Filter by city, level, or language.</p>
+          <p class="mt-2 text-sm"><span class="font-medium">Examples:</span> <code class="text-brand-700">/api/students</code> · <code class="text-brand-700">/api/students?city=Tangier&amp;level=Beginner</code></p>
+        </article>
+
+        <article class="rounded-xl bg-white p-5 ring-1 ring-sky-100">
+          <h3 class="font-semibold text-brand-800"><code>GET /api/student</code></h3>
+          <p class="mt-1 text-sm text-slate-600">Returns one student by ID.</p>
+          <p class="mt-2 text-sm"><span class="font-medium">Example:</span> <code class="text-brand-700">/api/student?id=2</code></p>
+        </article>
+
+        <article class="rounded-xl bg-white p-5 ring-1 ring-sky-100">
+          <h3 class="font-semibold text-brand-800"><code>GET /api/jokes</code></h3>
+          <p class="mt-1 text-sm text-slate-600">Returns one random child-friendly tech joke, or all jokes.</p>
+          <p class="mt-2 text-sm"><span class="font-medium">Examples:</span> <code class="text-brand-700">/api/jokes</code> · <code class="text-brand-700">/api/jokes?all=true</code></p>
+        </article>
+
+        <article class="rounded-xl bg-white p-5 ring-1 ring-sky-100">
+          <h3 class="font-semibold text-brand-800"><code>GET /api/weather</code></h3>
+          <p class="mt-1 text-sm text-slate-600">Fictional weather for Moroccan cities (practice only).</p>
+          <p class="mt-2 text-sm"><span class="font-medium">Examples:</span> <code class="text-brand-700">/api/weather</code> · <code class="text-brand-700">/api/weather?city=Tangier</code></p>
+        </article>
+
+        <article class="rounded-xl bg-white p-5 ring-1 ring-sky-100">
+          <h3 class="font-semibold text-brand-800"><code>GET /api/health</code></h3>
+          <p class="mt-1 text-sm text-slate-600">Checks if the API is online and returns the current time.</p>
+          <p class="mt-2 text-sm"><span class="font-medium">Example:</span> <code class="text-brand-700">/api/health</code></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Example JSON -->
+    <section class="mb-12" aria-labelledby="json-title">
+      <h2 id="json-title" class="font-display text-2xl font-bold text-brand-900">Example JSON responses</h2>
+      <div class="mt-6 grid gap-4 lg:grid-cols-2">
+        <div class="overflow-hidden rounded-xl bg-slate-900 text-slate-100 shadow-sm">
+          <p class="border-b border-slate-700 px-4 py-2 text-sm text-sky-300">/api/hello</p>
+          <pre class="p-4 text-sm leading-relaxed">{
+  "success": true,
+  "message": "Hello students!",
+  "teacher": "Oussama",
+  "lesson": "Introduction to APIs"
+}</pre>
+        </div>
+        <div class="overflow-hidden rounded-xl bg-slate-900 text-slate-100 shadow-sm">
+          <p class="border-b border-slate-700 px-4 py-2 text-sm text-sky-300">/api/fact</p>
+          <pre class="p-4 text-sm leading-relaxed">{
+  "success": true,
+  "data": {
+    "id": 12,
+    "category": "space",
+    "fact": "There are more stars..."
+  },
+  "totalFacts": 22
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fetch examples -->
+    <section class="mb-12" aria-labelledby="fetch-title">
+      <h2 id="fetch-title" class="font-display text-2xl font-bold text-brand-900">How to use fetch()</h2>
+      <p class="mt-2 text-slate-600">Copy these examples into your own HTML <code>&lt;script&gt;</code> tags. After deploying, replace the URL with your Vercel link.</p>
+
+      <div class="mt-6 grid gap-4 lg:grid-cols-2">
+        <div class="overflow-hidden rounded-xl bg-slate-900 text-slate-100 shadow-sm">
+          <p class="border-b border-slate-700 px-4 py-2 text-sm text-emerald-300">Using .then()</p>
+          <pre class="p-4 text-sm leading-relaxed">fetch("/api/fact")
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.error(error);
+  });</pre>
+        </div>
+        <div class="overflow-hidden rounded-xl bg-slate-900 text-slate-100 shadow-sm">
+          <p class="border-b border-slate-700 px-4 py-2 text-sm text-emerald-300">Using async/await</p>
+          <pre class="p-4 text-sm leading-relaxed">async function getJoke() {
+  try {
+    const response = await fetch("/api/jokes");
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+getJoke();</pre>
+        </div>
+      </div>
+
+      <div class="mt-4 overflow-hidden rounded-xl bg-slate-900 text-slate-100 shadow-sm">
+        <p class="border-b border-slate-700 px-4 py-2 text-sm text-emerald-300">From your own HTML project (after deploy)</p>
+        <pre class="p-4 text-sm leading-relaxed">fetch("https://YOUR-PROJECT.vercel.app/api/students?city=Tangier")
+  .then(response => response.json())
+  .then(data => {
+    console.log(data.count);
+    console.log(data.data);
+  });</pre>
+      </div>
+    </section>
+
+    <!-- Interactive try section -->
+    <section id="try" class="mb-12" aria-labelledby="try-title">
+      <h2 id="try-title" class="font-display text-2xl font-bold text-brand-900">Try the API now</h2>
+      <p class="mt-2 text-slate-600">Click a button. The response will appear below. This works after you run the project locally or deploy it.</p>
+
+      <div class="mt-6 flex flex-wrap gap-3" role="group" aria-label="API endpoint buttons">
+        <button type="button" data-endpoint="/api/hello" class="api-btn rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2">
+          Call /api/hello
+        </button>
+        <button type="button" data-endpoint="/api/fact" class="api-btn rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2">
+          Call /api/fact
+        </button>
+        <button type="button" data-endpoint="/api/fact?category=science" class="api-btn rounded-lg bg-sky-100 px-4 py-2 text-sm font-semibold text-brand-800 hover:bg-sky-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2">
+          Fact: science
+        </button>
+        <button type="button" data-endpoint="/api/students" class="api-btn rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2">
+          Call /api/students
+        </button>
+        <button type="button" data-endpoint="/api/students?city=Tangier" class="api-btn rounded-lg bg-sky-100 px-4 py-2 text-sm font-semibold text-brand-800 hover:bg-sky-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2">
+          Students in Tangier
+        </button>
+        <button type="button" data-endpoint="/api/student?id=2" class="api-btn rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2">
+          Call /api/student?id=2
+        </button>
+        <button type="button" data-endpoint="/api/jokes" class="api-btn rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2">
+          Call /api/jokes
+        </button>
+        <button type="button" data-endpoint="/api/jokes?all=true" class="api-btn rounded-lg bg-sky-100 px-4 py-2 text-sm font-semibold text-brand-800 hover:bg-sky-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2">
+          All jokes
+        </button>
+        <button type="button" data-endpoint="/api/weather?city=Tangier" class="api-btn rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2">
+          Weather: Tangier
+        </button>
+        <button type="button" data-endpoint="/api/weather" class="api-btn rounded-lg bg-sky-100 px-4 py-2 text-sm font-semibold text-brand-800 hover:bg-sky-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2">
+          All weather
+        </button>
+        <button type="button" data-endpoint="/api/health" class="api-btn rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
+          Call /api/health
+        </button>
+      </div>
+
+      <div class="mt-6">
+        <div class="mb-2 flex flex-wrap items-center justify-between gap-2">
+          <p class="text-sm font-medium text-slate-700">
+            Last request: <span id="last-url" class="text-brand-700">none yet</span>
+          </p>
+          <p class="text-sm font-medium text-slate-700">
+            Status: <span id="status-code" class="rounded bg-slate-100 px-2 py-0.5">—</span>
+          </p>
+        </div>
+        <pre id="response-box" class="min-h-[180px] overflow-auto rounded-xl bg-slate-900 p-4 text-sm leading-relaxed text-emerald-300" aria-live="polite" aria-atomic="true">Click a button to see the JSON response here.</pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-sky-100 bg-white/80">
+    <div class="mx-auto max-w-6xl px-4 py-6 text-sm text-slate-600 sm:px-6">
+      <p>Student Learning API · Built for classroom practice · Teacher: Oussama</p>
+      <p class="mt-1">No login, no API keys, no real personal data.</p>
+    </div>
+  </footer>
+
+  <script>
+    const responseBox = document.getElementById("response-box");
+    const lastUrl = document.getElementById("last-url");
+    const statusCode = document.getElementById("status-code");
+
+    async function callApi(endpoint) {
+      lastUrl.textContent = endpoint;
+      statusCode.textContent = "Loading...";
+      statusCode.className = "rounded bg-amber-100 px-2 py-0.5 text-amber-800";
+      responseBox.textContent = "Loading...";
+
+      try {
+        const response = await fetch(endpoint);
+        const data = await response.json();
+
+        statusCode.textContent = response.status;
+        statusCode.className = response.ok
+          ? "rounded bg-emerald-100 px-2 py-0.5 text-emerald-800"
+          : "rounded bg-rose-100 px-2 py-0.5 text-rose-800";
+
+        responseBox.textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        statusCode.textContent = "Error";
+        statusCode.className = "rounded bg-rose-100 px-2 py-0.5 text-rose-800";
+        responseBox.textContent =
+          "Could not reach the API.\n\n" +
+          "If you opened this file directly (file://), use `vercel dev` or deploy to Vercel.\n\n" +
+          "Error: " + error.message;
+      }
+    }
+
+    document.querySelectorAll(".api-btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        callApi(button.getAttribute("data-endpoint"));
+      });
+    });
+  </script>
+</body>
+</html>
