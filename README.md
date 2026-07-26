@@ -1,28 +1,50 @@
-# Student Learning API
+# LearnHub
 
-A beginner-friendly REST API for classroom lessons with students aged **11–15**.
+A classroom **learning platform** for students aged **11–15**.
 
-Students can call public endpoints using JavaScript `fetch()` from their own HTML projects (including Live Server). The project is ready to deploy on **Vercel**.
+LearnHub is not only an API project — it is a place for **many lessons** (APIs now, more subjects later).
 
-- No database
-- No authentication
-- No API keys
-- CORS enabled (`Access-Control-Allow-Origin: *`)
-- All student data is **fictional**
+- Platform home: `/`
+- All lessons: `/lessons`
+- Practice API + library CRUD included
+- CORS enabled for student HTML projects
+- Teacher: **Oussama**
 
-Teacher: **Oussama**
+---
+
+## Pages
+
+| URL | What it is |
+|-----|------------|
+| `/` | LearnHub home |
+| `/lessons` | Hub: all **lessons** + **labs** |
+| `/lessons/api` | Lesson 1 — Intro to APIs (theory) |
+| `/lessons/http-methods` | Lesson 2 — HTTP methods (theory) |
+| `/labs/api-playground` | Lab 1 — API practice buttons |
+| `/labs/library-crud` | Lab 2 — Library CRUD practice |
+
+**Lessons** = explain ideas. **Labs** = hands-on practice.
 
 ---
 
 ## 1. Project description
 
-This API helps students learn:
+Students learn skills step by step:
 
 - what an **endpoint** is
 - how to send a **request**
 - how to read a **JSON response**
-- how **status codes** work (`200`, `400`, `404`)
-- how to use **`fetch()`** and **`async/await`**
+- how **status codes** work
+- how to use **`fetch()`**
+- **GET, POST, PUT, DELETE** and CRUD
+- a library app with **PostgreSQL**
+
+Open after deploy:
+
+```text
+https://YOUR-PROJECT.vercel.app/
+https://YOUR-PROJECT.vercel.app/lessons
+```
 
 ---
 
@@ -32,19 +54,33 @@ This API helps students learn:
 student-api/
 ├── api/
 │   ├── _helpers.js      # Shared CORS + JSON helpers (not a public route)
+│   ├── _db.js           # PostgreSQL connection helper
 │   ├── hello.js
 │   ├── fact.js
 │   ├── students.js
 │   ├── student.js
 │   ├── jokes.js
 │   ├── weather.js
-│   └── health.js
+│   ├── health.js
+│   ├── books.js         # GET all + POST books (library)
+│   └── books/
+│       └── [id].js      # GET one, PUT, DELETE
 ├── data/
 │   ├── facts.js
 │   ├── students.js
 │   └── jokes.js
+├── sql/
+│   └── books.sql        # Create the library books table
 ├── public/
-│   └── index.html
+│   ├── index.html
+│   ├── lessons.html            # Hub: lessons + labs
+│   ├── lessons/
+│   │   ├── api.html            # Lesson 1 — Intro to APIs
+│   │   └── http-methods.html   # Lesson 2 — HTTP methods
+│   └── labs/
+│       ├── api-playground.html # Lab 1 — try endpoints
+│       └── library-crud.html   # Lab 2 — library CRUD
+├── .env.example
 ├── package.json
 ├── vercel.json
 ├── .gitignore
@@ -59,21 +95,21 @@ student-api/
 
 - [Node.js](https://nodejs.org/) version 18 or newer
 - A free [Vercel](https://vercel.com/) account (for deployment)
+- Optional: a PostgreSQL database for the CRUD lab
 - Optional: [Git](https://git-scm.com/) and a [GitHub](https://github.com/) account
+
+### Install packages
+
+```bash
+cd student-api
+npm install
+```
 
 ### Install the Vercel CLI (recommended for local testing)
 
 ```bash
 npm install -g vercel
 ```
-
-Then open a terminal in this project folder:
-
-```bash
-cd student-api
-```
-
-No project dependencies are required. The API uses built-in Node.js features only.
 
 ---
 
@@ -218,6 +254,13 @@ https://github.com/your-username/student-api.git
 | `GET` | `/api/weather` | Fictional weather for all cities |
 | `GET` | `/api/weather?city=Tangier` | Weather for one city |
 | `GET` | `/api/health` | API health check |
+| `GET` | `/api/books` | List library books |
+| `GET` | `/api/books?genre=science` | Filter by genre |
+| `GET` | `/api/books?available=true` | Only available books |
+| `POST` | `/api/books` | Add a book |
+| `GET` | `/api/books/1` | Get one book by id |
+| `PUT` | `/api/books/1` | Update a book |
+| `DELETE` | `/api/books/1` | Delete a book |
 
 ### Fact categories
 
@@ -226,6 +269,73 @@ https://github.com/your-username/student-api.git
 ### Weather cities
 
 `Tangier`, `Casablanca`, `Rabat`, `Marrakech`, `Fez`, `Agadir`
+
+### Lesson pages
+
+```text
+/
+/lessons
+/lessons/api
+/lessons/http-methods
+/labs/api-playground
+/labs/library-crud
+```
+
+---
+
+## PostgreSQL setup for the library CRUD lab
+
+1. Create a PostgreSQL database (Neon, Supabase, Railway, etc.).
+2. Open the SQL editor and run the file `sql/books.sql`.
+3. Copy the connection string.
+4. In Vercel: **Project → Settings → Environment Variables**
+   - Name: `DATABASE_URL`
+   - Value: your connection string
+5. Redeploy:
+
+```bash
+vercel --prod
+```
+
+For local testing, create a `.env` file (do not commit it):
+
+```text
+DATABASE_URL=postgresql://USER:PASSWORD@HOST:5432/DATABASE?sslmode=require
+```
+
+Then run:
+
+```bash
+vercel dev
+```
+
+### Example POST body
+
+```json
+{
+  "title": "Robot Friends",
+  "author": "Lina Benali",
+  "genre": "technology",
+  "year": 2024,
+  "pages": 120,
+  "language": "English",
+  "available": true,
+  "summary": "A story about coding robots."
+}
+```
+
+### Book fields
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| `title` | text | yes | max 150 chars |
+| `author` | text | yes | max 100 chars |
+| `genre` | text | yes | fiction, science, history, technology, comics, poetry, biography, other |
+| `year` | number | yes | 1000–2100 |
+| `pages` | number | no | 1–5000 |
+| `language` | text | no | default English |
+| `available` | boolean | no | default true |
+| `summary` | text | no | max 300 chars |
 
 ---
 
@@ -327,7 +437,7 @@ This API allows classroom use by sending:
 
 ```text
 Access-Control-Allow-Origin: *
-Access-Control-Allow-Methods: GET, OPTIONS
+Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS
 Access-Control-Allow-Headers: Content-Type
 ```
 
@@ -374,6 +484,8 @@ That means students can call the API from:
 8. **Filter Detectives** — Combine filters like `city` + `level` and count the results.
 9. **Status Code Hunt** — Intentionally call bad URLs and read `400` / `404` responses.
 10. **Health Monitor** — Call `/api/health` and display the live timestamp.
+11. **Methods Match** — Open `/learn` and match GET/POST/PUT/DELETE to Create/Read/Update/Delete.
+12. **Library Board** — Use the biblio CRUD mini app to add, edit, and delete books in PostgreSQL.
 
 ---
 

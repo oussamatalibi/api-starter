@@ -4,7 +4,7 @@ import {
   allowGetOnly,
   sendJson,
   getQueryParam
-} from "./_helpers.js";
+} from "../lib/_helpers.js";
 
 export default function handler(req, res) {
   try {
