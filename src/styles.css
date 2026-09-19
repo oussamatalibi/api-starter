@@ -1327,9 +1327,395 @@ button.ghost,
   color: #8b5cf6;
 }
 
-.method-card,
-.item,
-.notice,
+.home-showcase {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  margin-top: 26px;
+}
+
+.riddle-card,
+.student-month,
+.showcase-projects {
+  background: rgb(255 255 255 / 0.92);
+  border: 1px solid rgb(216 180 254 / 0.18);
+  border-radius: 28px;
+  box-shadow: 0 22px 60px rgb(15 23 42 / 0.08);
+  color: #17231a;
+  padding: 28px;
+}
+
+.riddle-card {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: minmax(0, 1fr) 230px;
+}
+
+.showcase-heading h2,
+.student-month h2,
+.showcase-projects h2 {
+  color: #17231a;
+  font-size: clamp(1.7rem, 3vw, 2.55rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 12px 0;
+}
+
+.showcase-heading > p:not(.eyebrow),
+.student-month > p,
+.showcase-projects > p {
+  color: #667085;
+  line-height: 1.7;
+}
+
+.difficulty,
+.duration {
+  background: #ede9fe;
+  border-radius: 999px;
+  color: #6d28d9;
+  display: inline-flex;
+  font-size: 0.8rem;
+  font-weight: 900;
+  margin-right: 8px;
+  padding: 6px 10px;
+}
+
+.duration {
+  background: #f2f4f7;
+  color: #667085;
+}
+
+.riddle-card > img {
+  align-self: center;
+  border-radius: 20px;
+  box-shadow: 0 16px 35px rgb(99 102 241 / 0.18);
+  width: 100%;
+}
+
+.transmission {
+  background: #17102d;
+  border-radius: 20px;
+  color: #fff;
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+}
+
+.transmission strong {
+  color: #facc15;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+}
+
+.transmission code {
+  color: #e9d5ff;
+  font-size: 1.5rem;
+  letter-spacing: 0.18em;
+  padding: 8px 0;
+}
+
+.transmission small,
+.transmission p {
+  color: #c9bdf0;
+  margin: 0;
+}
+
+.transmission label {
+  display: grid;
+  gap: 7px;
+  margin-top: 8px;
+}
+
+.transmission input {
+  border: 1px solid rgb(216 180 254 / 0.25);
+  border-radius: 10px;
+  font: inherit;
+  padding: 11px;
+}
+
+.transmission button {
+  color: #fff;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.student-month {
+  text-align: center;
+}
+
+.student-month img {
+  border-radius: 50%;
+  box-shadow: 0 12px 30px rgb(168 85 247 / 0.25);
+  margin: 16px auto;
+  width: min(100%, 190px);
+}
+
+.student-month h3 {
+  font-size: 1.45rem;
+  margin: 8px 0 0;
+}
+
+.student-month .month {
+  color: #8b5cf6;
+  font-weight: 900;
+  margin: 4px 0 16px;
+}
+
+.student-month strong {
+  color: #6d28d9;
+  display: block;
+  margin-top: 20px;
+}
+
+.showcase-projects {
+  background:
+    linear-gradient(rgb(24 11 53 / 0.9), rgb(24 11 53 / 0.9)),
+    repeating-linear-gradient(0deg, transparent 0 39px, rgb(168 85 247 / 0.08) 40px),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgb(168 85 247 / 0.08) 40px),
+    #100721;
+  border-color: rgb(216 180 254 / 0.2);
+  color: #fff;
+  margin-top: 26px;
+  text-align: center;
+}
+
+.showcase-projects h2 { color: #fff; font-size: clamp(2.4rem, 5vw, 4rem); }
+.showcase-projects > p:not(.eyebrow) { color: #c9bdf0; }
+.showcase-projects .eyebrow { color: #a78bfa; }
+
+.coming-soon {
+  border: 1px solid rgb(216 180 254 / 0.35);
+  border-radius: 999px;
+  color: #fb923c;
+  font-weight: 950;
+  letter-spacing: 0.18em;
+  margin: 24px auto 28px;
+  max-width: 260px;
+  padding: 13px 16px;
+}
+
+.project-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(280px, 360px);
+  justify-content: center;
+  margin-bottom: 28px;
+  align-items: start;
+}
+
+.project-card {
+  align-self: start;
+  border: 1px dashed rgb(168 85 247 / 0.55);
+  border-radius: 24px;
+  padding: 28px 20px;
+}
+
+.project-card > div { position: relative; }
+.project-card img { border-radius: 18px; width: 100%; }
+.project-card h3 { color: #ede9fe; line-height: 1.35; margin: 32px 0 0; }
+.showcase-projects > strong { color: #c9bdf0; }
+
+.project-card.featured-project {
+  color: inherit;
+  display: block;
+  text-decoration: none;
+  width: min(100%, 470px);
+}
+
+.featured-project .project-image {
+  overflow: hidden;
+  position: relative;
+}
+
+.featured-project {
+  background: rgb(255 255 255 / 0.05);
+  border: 1px solid rgb(192 132 252 / 0.55);
+  padding: 14px;
+}
+
+.featured-project img {
+  aspect-ratio: 1.95 / 1;
+  border-radius: 20px;
+  object-fit: cover;
+  transition: transform 220ms ease;
+}
+
+.featured-project:hover img {
+  transform: scale(1.04);
+}
+
+.featured-project h3 {
+  color: #fff;
+  font-size: 1.25rem;
+  margin: 4px 0 6px;
+}
+
+.project-card-copy {
+  padding: 4px 12px 0;
+}
+
+.project-type {
+  align-items: center;
+  background: #8b3dff;
+  border-radius: 999px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 900;
+  height: auto;
+  padding: 8px 14px;
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  width: auto;
+}
+
+.project-card-topline {
+  align-items: start;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.project-card-copy .project-student {
+  color: #c084fc;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  margin: 16px 0 0;
+  text-transform: uppercase;
+}
+
+.featured-project p {
+  color: #c9bdf0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  margin: 0 0 12px;
+}
+
+.featured-project .project-card-copy > strong {
+  align-items: center;
+  color: #fb923c;
+  display: flex;
+  font-size: 0.85rem;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.featured-project .project-card-copy > strong span {
+  font-size: 1.1rem;
+}
+
+.project-card:not(.featured-project) {
+  padding: 14px;
+}
+
+.project-card:not(.featured-project) h3 {
+  font-size: 1rem;
+  margin: 22px 0 4px;
+}
+
+.project-card:not(.featured-project) > div {
+  opacity: 0.75;
+}
+
+.project-card:not(.featured-project) > div span {
+  font-size: 0.85rem;
+}
+
+.sami-project-page {
+  background: url("/sami.jpeg") center / cover fixed;
+  color: #fff;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 24px;
+  text-align: center;
+  text-shadow: 2px 2px 5px #000;
+}
+
+.sami-project-page h1 {
+  color: #ffeb3b;
+  font-size: 50px;
+  line-height: 1.1;
+  margin: 0 auto 22px;
+}
+
+.sami-project-page p {
+  color: #fff;
+  font-size: 25px;
+  line-height: 1.35;
+  margin: 0 auto;
+  max-width: 1050px;
+}
+
+.project-tools {
+  display: flex;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.project-tools span {
+  align-items: center;
+  background: rgb(255 255 255 / 0.07);
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 50%;
+  color: #e9d5ff;
+  display: inline-flex;
+  font-size: 0.85rem;
+  height: 50px;
+  justify-content: center;
+  overflow: hidden;
+  position: static;
+  width: 46px;
+}
+
+.project-tools span img {
+  border-radius: 50%;
+  height: 32px;
+  object-fit: cover;
+  width: 32px;
+}
+
+.project-action {
+  align-items: center;
+  border-top: 1px solid rgb(216 180 254 / 0.18);
+  color: #fff;
+  display: flex;
+  font-size: 1rem;
+  gap: 12px;
+  justify-content: space-between;
+  margin-top: 18px;
+  padding-top: 18px;
+}
+
+.project-action > span {
+  align-items: center;
+  background: rgb(168 85 247 / 0.35);
+  border: 1px solid #a855f7;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  font-size: 1.3rem;
+  height: 42px;
+  justify-content: center;
+  position: static;
+  width: 42px;
+}
+
+@media (max-width: 700px) {
+  .sami-project-page {
+    padding: 18px;
+  }
+
+  .sami-project-page h1 {
+    font-size: clamp(42px, 12vw, 50px);
+  }
+
+  .sami-project-page p {
+    font-size: clamp(20px, 5vw, 25px);
+  }
+}
+
 .error {
   background: #fff;
   border-radius: 20px;
@@ -1734,5 +2120,276 @@ th {
   .directory-row {
     align-items: flex-start;
     flex-direction: column;
+  }
+}
+
+/* Restored production homepage treatment. */
+.home-showcase {
+  grid-template-columns: 1fr;
+}
+
+.riddle-card {
+  background:
+    linear-gradient(rgb(13 7 35 / 0.92), rgb(13 7 35 / 0.92)),
+    repeating-linear-gradient(0deg, transparent 0 39px, rgb(168 85 247 / 0.07) 40px),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgb(168 85 247 / 0.07) 40px),
+    #100721;
+  border-color: rgb(168 85 247 / 0.28);
+  color: #fff;
+  display: grid;
+  gap: 20px 28px;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(360px, 1.1fr);
+  grid-template-rows: auto 1fr;
+  min-height: 740px;
+}
+
+.riddle-copy {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+
+.riddle-kicker {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.riddle-tags {
+  display: flex;
+  gap: 8px;
+}
+
+.riddle-copy h2 {
+  color: #fff;
+  font-size: clamp(3rem, 5vw, 5.6rem);
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+  margin: 22px 0;
+}
+
+.riddle-copy > p {
+  color: #c9bdf0;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.riddle-visual {
+  align-items: center;
+  background:
+    radial-gradient(circle at 50% 42%, rgb(168 85 247 / 0.22), transparent 42%),
+    repeating-linear-gradient(0deg, transparent 0 39px, rgb(168 85 247 / 0.10) 40px),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgb(168 85 247 / 0.10) 40px),
+    #0b0620;
+  border: 1px solid rgb(139 92 246 / 0.38);
+  border-radius: 24px;
+  display: flex;
+  grid-column: 2;
+  grid-row: 1 / 3;
+  justify-content: center;
+  min-height: 640px;
+  overflow: hidden;
+  padding: 36px 22px;
+}
+
+.riddle-visual img {
+  border-radius: 18px;
+  display: block;
+  max-width: 100%;
+  object-fit: contain;
+  width: min(100%, 560px);
+}
+
+.riddle-copy .transmission {
+  align-content: start;
+  background: rgb(13 8 37 / 0.72);
+  border: 1px solid rgb(139 92 246 / 0.55);
+  border-radius: 22px;
+  display: grid;
+  gap: 16px;
+  justify-items: center;
+  margin-top: 18px;
+  padding: 22px 18px 18px;
+  text-align: center;
+}
+
+.transmission strong {
+  color: #c4b5fd;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.morse {
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  min-height: 34px;
+}
+
+.morse-letter {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.morse .dot,
+.morse .dash {
+  background: #fb923c;
+  box-shadow: 0 0 8px rgb(251 146 60 / 0.45);
+  display: block;
+  flex-shrink: 0;
+}
+
+.morse .dot {
+  border-radius: 999px;
+  height: 8px;
+  width: 8px;
+}
+
+.morse .dash {
+  border-radius: 999px;
+  height: 8px;
+  width: 20px;
+}
+
+.riddle-copy .transmission small {
+  border: 1px solid rgb(139 92 246 / 0.7);
+  border-radius: 999px;
+  color: #ddd6fe;
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  width: max-content;
+}
+
+.riddle-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.riddle-form label {
+  color: #fff;
+  display: grid;
+  font-size: 1.05rem;
+  font-weight: 800;
+  gap: 10px;
+}
+
+.riddle-form input {
+  background: #0d0825;
+  border: 1px solid #9651ed;
+  border-radius: 12px;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  height: 56px;
+  outline: none;
+  padding: 0 16px;
+}
+
+.riddle-form input::placeholder {
+  color: #9d77d2;
+  opacity: 1;
+}
+
+.riddle-form button {
+  justify-content: center;
+  min-height: 52px;
+}
+
+.riddle-form > p {
+  background: rgb(255 255 255 / 0.08);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 10px;
+  color: #c9bdf0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0;
+  padding: 10px 12px;
+}
+
+.student-month {
+  align-items: center;
+  background: radial-gradient(circle at 18% 70%, rgb(249 115 22 / 0.14), transparent 25%), linear-gradient(135deg, #100721, #24104f);
+  border-color: rgb(168 85 247 / 0.28);
+  color: #fff;
+  display: grid;
+  gap: 34px;
+  grid-template-columns: minmax(210px, 0.38fr) minmax(0, 1fr);
+  min-height: 360px;
+  padding: 42px 64px;
+  text-align: left;
+}
+
+.student-month img {
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #a855f7, 0 0 0 8px #251044, 0 0 34px rgb(192 132 252 / 0.7);
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0 auto;
+  width: min(100%, 220px);
+}
+
+.student-copy {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.student-copy h2 {
+  color: #fff;
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  line-height: 0.98;
+  margin: 16px 0 22px;
+}
+
+.student-copy h3 {
+  color: #fff;
+  font-size: clamp(1.65rem, 3vw, 2.2rem);
+  margin: 0 0 10px;
+}
+
+.student-copy .month {
+  background: rgb(168 85 247 / 0.24);
+  border-radius: 999px;
+  color: #fff;
+  display: inline-flex;
+  font-weight: 900;
+  margin: 0 0 18px;
+  padding: 6px 10px;
+}
+
+.student-copy > p:not(.eyebrow):not(.month) {
+  color: #c9bdf0;
+  line-height: 1.65;
+  margin: 0 0 16px;
+}
+
+.student-copy strong {
+  color: #fb923c;
+  display: block;
+  margin-top: 18px;
+}
+
+@media (max-width: 700px) {
+  .riddle-card,
+  .student-month {
+    grid-template-columns: 1fr;
+  }
+
+  .riddle-copy,
+  .riddle-visual,
+  .student-month img,
+  .student-copy {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .student-month {
+    padding: 32px 24px;
+    text-align: center;
   }
 }

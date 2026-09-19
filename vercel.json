@@ -1,27 +1,7 @@
 {
   "version": 2,
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/auth", "destination": "/index.html" },
-    { "source": "/auth.html", "destination": "/index.html" },
-    { "source": "/homework-student", "destination": "/index.html" },
-    { "source": "/homework-student.html", "destination": "/index.html" },
-    { "source": "/homework-admin", "destination": "/index.html" },
-    { "source": "/homework-admin.html", "destination": "/index.html" },
-    { "source": "/parent", "destination": "/index.html" },
-    { "source": "/parent.html", "destination": "/index.html" },
-    { "source": "/api-tester", "destination": "/index.html" },
-    { "source": "/api-tester.html", "destination": "/index.html" },
-    { "source": "/lessons/api", "destination": "/index.html" },
-    { "source": "/lessons/api.html", "destination": "/index.html" },
-    { "source": "/lessons/http-methods", "destination": "/index.html" },
-    { "source": "/lessons/http-methods.html", "destination": "/index.html" },
-    { "source": "/labs/api-playground", "destination": "/index.html" },
-    { "source": "/labs/api-playground.html", "destination": "/index.html" },
-    { "source": "/labs/library-crud", "destination": "/index.html" },
-    { "source": "/labs/library-crud.html", "destination": "/index.html" },
-    { "source": "/lessons/crud", "destination": "/index.html" },
-    { "source": "/learn", "destination": "/index.html" }
+    { "source": "/", "destination": "/index.html" }
   ],
   "headers": [
     {
