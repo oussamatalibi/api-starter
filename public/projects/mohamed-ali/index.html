@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="/projects/mohamed-ali/style.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Calculator</h1>
+        <input type="text" id="display" class="display" readonly>
+        <div class="buttons-grid">
+            <button class="btn function-btn" data-action="clear">C</button>
+            <button class="btn function-btn" data-action="delete">DEL</button>
+            <button class="btn function-btn" data-action="divide">÷</button>
+            <button class="btn function-btn" data-action="multiply">×</button>
+
+            <button class="btn number-btn" data-number="7">7</button>
+            <button class="btn number-btn" data-number="8">8</button>
+            <button class="btn number-btn" data-number="9">9</button>
+            <button class="btn function-btn" data-action="subtract">−</button>
+
+            <button class="btn number-btn" data-number="4">4</button>
+            <button class="btn number-btn" data-number="5">5</button>
+            <button class="btn number-btn" data-number="6">6</button>
+            <button class="btn function-btn" data-action="add">+</button>
+
+            <button class="btn number-btn" data-number="1">1</button>
+            <button class="btn number-btn" data-number="2">2</button>
+            <button class="btn number-btn" data-number="3">3</button>
+            <button class="btn function-btn" data-action="decimal">.</button>
+
+            <button class="btn number-btn" data-number="0" style="grid-column: 1 / 3;">0</button>
+            <button class="btn equals-btn" data-action="equals">=</button>
+        </div>
+    </div>
+    <script src="/projects/mohamed-ali/script.js"></script>
+</body>
+</html>

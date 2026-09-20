@@ -1,7 +1,13 @@
 {
   "version": 2,
+  "cleanUrls": true,
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
+    { "source": "/homework-student", "destination": "/index.html" },
+    { "source": "/projects/mohamed-ali", "destination": "/projects/mohamed-ali/index.html" },
+    { "source": "/projects/mohamed-ali/", "destination": "/projects/mohamed-ali/index.html" },
     { "source": "/projects/sami", "destination": "/index.html" }
   ],
   "headers": [
